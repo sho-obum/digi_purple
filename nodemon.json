@@ -1,0 +1,6 @@
+{
+  "watch": ["src", "public", "astro.config.mjs"],
+  "ext": "js,ts,mjs,astro,css,html",
+  "exec": "npm run dev",
+  "ignore": ["dist", "node_modules"]
+}
