@@ -3,12 +3,17 @@ import { Circle } from "../components/Circle";
 import { CutCornerButton } from "../components/CutCornerButton";
 import { Hexagon } from "../components/Hexagon";
 import { motion, useScroll, useTransform } from "framer-motion";
+import BlurText from "../blocks/TextAnimations/BlurText/BlurText";
+import ShinyText from "../blocks/TextAnimations/ShinyText/ShinyText";
 
 export const HeroSection = () => {
   const iconsahedronRef = useRef(null);
   const cubeRef = useRef(null);
   const torusRef = useRef(null);
   const cuboidRef = useRef(null);
+  const handleAnimationComplete = () => {
+    console.log("Animation completed!");
+  };
 
   const { scrollYProgress: cubeScrollYProgress } = useScroll({
     target: cubeRef,
@@ -35,13 +40,25 @@ export const HeroSection = () => {
     <section className="py-16 md:py-32  overflow-x-clip">
       <div className="container">
         <div className="-mt-4">
-          <p className="uppercase font-extra text-center text-zinc-500 tracking-wider -mb-3">
-            Introducing Digitar Media
-          </p>
-          <h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl max-w-3xl text-center mt-4 mx-auto">
-            The Future of Marketing is here.
-          </h1>
+          <div className="flex justify-center">
+            <ShinyText
+              text="Introducing Digitar Media"
+              disabled={false}
+              speed={3}
+              className="uppercase font-extra text-center text-zinc-500 tracking-wider -mb-3"
+            />
+          </div>
 
+          <div className="flex justify-center">
+            <BlurText
+              text="The Future of Marketing is here."
+              delay={100}
+              animateBy="words"
+              direction="top"
+              onAnimationComplete={handleAnimationComplete}
+              className="font-heading font-black text-5xl md:text-6xl lg:text-7xl max-w-3xl text-center mt-4"
+            />
+          </div>
           <p className="text-center text-xl md:text-2xl mt-6 max-w-xl text-zinc-400 mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut laborssse et dolore magna aliqussa.
@@ -113,15 +130,39 @@ export const HeroSection = () => {
             </motion.div>
           </div>
         </div>
-        <div className=" flex justify-center flex-col items-center mt-30 md:mt-60 gap-4">
+        <div className=" flex justify-center flex-col items-center mt-30 md:mt-60 gap-4 sm:mt-40">
           <div className="h-10 w-5 outline outline-6px outline-fuchsia-500/10 inline-flex rounded-full justify-center pt-2">
             <div className="h-3 w-1 bg-fuchsia-500 rounded-full "></div>
           </div>
-          <p className="uppercase tex-zinc-500 font-extra tracking-wider">
-            Scroll to learn more
-          </p>
+
+          <div className="flex justify-center">
+            <ShinyText
+              text="Scroll to learn more"
+              disabled={false}
+              speed={3}
+              className="uppercase font-extra text-center text-zinc-500 tracking-wider -mb-3"
+            />
+          </div>
         </div>
       </div>
+      {/* <div className="mt-64">
+        <ScrollVelocity
+          texts={[
+            "Performance ✦ Social ✦ Influencer ✦ Branding ✦",
+            "Performance ✦ Social ✦ Influencer ✦ Branding ✦",
+          ]}
+          // velocity={velocity}
+          className="custom-scroll-text"
+        />
+      </div> */}
+      {/* <div className="sm:relative sm:-top-[240px] md:static md:top-0">
+        <CurvedLoop
+          marqueeText="Performance ✦ Social ✦ Influencer ✦ Branding ✦"
+          speed={1}
+          curveAmount={300}
+          interactive={true}
+        />
+      </div> */}
     </section>
   );
 };
